@@ -10,6 +10,7 @@ def create_blog(db: Session, blog: schemas.BlogCreate):
 def get_blogs(db: Session):
     return db.query(models.Blog).all()
 
+
 def get_blog(db: Session, blog_id: int):
     return db.query(models.Blog).filter(models.Blog.id == blog_id).first()
 
