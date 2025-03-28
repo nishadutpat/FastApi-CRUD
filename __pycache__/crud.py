@@ -31,4 +31,9 @@ def delete_blog(db: Session, blog_id: int):
         return {"message": "Blog deleted successfully"}
     return {"error": "Blog not found"}
 
+
+    @app.get('/')
+    def get():
+        return ('return get merhod')
+
  
