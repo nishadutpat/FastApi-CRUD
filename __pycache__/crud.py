@@ -31,6 +31,7 @@ def delete_blog(db: Session, blog_id: int):
         db.commit()
         return {"message": "Blog deleted successfully"}
     return {"error": "Blog not found"}
+    
 
 
     
