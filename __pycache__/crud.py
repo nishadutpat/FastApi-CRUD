@@ -24,6 +24,7 @@ def update_blog(db: Session, blog_id: int, blog_data: schemas.BlogCreate):
         return blog
     return None
 
+
 def delete_blog(db: Session, blog_id: int):
     blog = db.query(models.Blog).filter(models.Blog.id == blog_id).first()
     if blog:
@@ -32,6 +33,8 @@ def delete_blog(db: Session, blog_id: int):
         return {"message": "Blog deleted successfully"}
     return {"error": "Blog not found"}
     
+
+
 
 
     
