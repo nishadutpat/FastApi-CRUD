@@ -10,7 +10,15 @@ SECRET_KEY = "test"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
-
+# users_db = {
+#     "sample_user":{
+#         "username": "sampleuser",
+#         "fullname": "sample user",
+#         "email": "sampleuser@gmail.com",
+#         "password": "sample123",
+#         "disables": False,
+#     }
+# }
 fake_users_db = {
     "testuser": {
         "username": "testuser",
@@ -28,7 +36,7 @@ def authenticate_user(username: str, password: str):
     """Authenticate user using hardcoded password."""
     user = fake_users_db.get(username)
     if not user or user["password"] != password:
-        return False
+        return 
     return user
 
 
@@ -58,8 +66,10 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
         )
 
 
+
 def get_current_active_user(current_user: dict = Depends(get_current_user)):
     """Ensure the user is active (not disabled)."""
     if current_user.get("disabled"):
         raise HTTPException(status_code=400, detail="Inactive user")
     return current_user
+    
